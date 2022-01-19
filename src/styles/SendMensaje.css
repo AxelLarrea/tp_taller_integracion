@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Roboto:wght@300&display=swap');
+
+.message-super-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 900px;
+}
+
+.message-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1400px;
+    height: 700px;
+    background-color: #00796B;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.message-form-container h1 {
+    margin: 30px 0 60px;
+}
+
+.message-input-container {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    width: 1200px;
+}
+
+
+.message-input-container input {
+    margin-bottom: 20px;
+    width: 1200px;
+    height: 50px;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    padding-left: 20px;
+}
+
+.message-input-container input[type="text"] {
+    font-size: 20px;
+}
+
+.message-input-container button {
+    margin-top: 20px;
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+}
+
+#mensaje {
+    height: 400px;
+}
+
+
+textarea {
+    width: 1200px;
+    height: 400px;
+    background-color: white;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    padding: 10px 10px 0 10px;
+    resize: none;
+    font-size: 20px;
+}

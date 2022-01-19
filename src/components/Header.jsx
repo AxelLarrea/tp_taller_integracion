@@ -11,10 +11,9 @@ const Header = () => {
                     <img src={logo} alt="logo"/>
                 </div>
             </Link>
-            {/* <button className="btn-header">Salir</button> */}
 
             <div className="btn-header">
-                <a href="#" className="btn-a-header">Salir</a>
+                <a href="/" className="btn-a-header">Salir</a>
             </div>
             
 

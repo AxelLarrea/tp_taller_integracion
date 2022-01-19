@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Roboto:wght@300&display=swap');
 
+*{
+    margin: 0;
+    padding: 0;
+}
+
 :root{
     --principal-bg-color: #00796B;
     --secundario-bg-color: #054B43;
@@ -29,7 +34,7 @@ body{
     justify-content: center;
     background-color: var(--principal-bg-color);
     border-radius: 5px;
-    
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .cards-container a {
@@ -52,6 +57,7 @@ body{
     place-items: center;
     border-radius: 5px;
     text-decoration: none;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 .card2 {
@@ -62,4 +68,5 @@ body{
     display: grid;
     place-items: center;
     border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
