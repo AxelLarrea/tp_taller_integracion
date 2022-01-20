@@ -8,6 +8,7 @@ import Turnos from '../pages/Turnos';
 import Mensajes from '../pages/Mensajes';
 import Noticias from '../pages/Noticias';
 import Cobros from '../pages/Cobros';
+import AgregarOS from '../components/ObraSocial/AgregarOS';
 
 
 const App = () => {
@@ -17,7 +18,13 @@ const App = () => {
                 <Routes>
                     <Route path='/' element={<Home/>}/>
                     <Route path='/medicos' element={<Medicos/>}/>
-                    <Route path='/obra-social' element={<ObraSocial/>}/>    
+
+
+                    <Route path='/obra-social' element={<ObraSocial/>}/>  
+                    <Route path='/obra-social/editar' element={<AgregarOS text="Editar" btntext="Guardar Cambios"/>}/> 
+                    <Route path='/obra-social/agregar' element={<AgregarOS text="Agregar" btntext="Agregar"/>}/>
+
+
                     <Route path='/turnos' element={<Turnos/>}/>      
                     <Route path='/mensajes' element={<Mensajes/>}/>
                     <Route path='/noticias' element={<Noticias/>}/>  
