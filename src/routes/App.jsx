@@ -18,7 +18,7 @@ const App = () => {
                 <Routes>
                     <Route path='/' element={<Home/>}/>
                     <Route path='/medicos' element={<Medicos/>}/>
-
+                    
 
                     <Route path='/obra-social' element={<ObraSocial/>}/>  
                     <Route path='/obra-social/editar' element={<AgregarOS text="Editar" btntext="Guardar Cambios"/>}/> 

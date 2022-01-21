@@ -1,13 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import boton_regresar from '../../assets/boton_regresar.png';
-import boton_agregar from '../../assets/boton_agregar.png';
-import '../../styles/HomeOS.css';
+import boton_regresar from '../assets/boton_regresar.png';
+import IndividualOS from './ObraSocial/IndividualOS';
 
-import IndividualOS from './IndividualOS';
-
-const HomeOS = () => {
-
+const CyR = () => {
     return (
         <>
             <div className="btn-container">
@@ -18,12 +14,14 @@ const HomeOS = () => {
                     </Link>
                 </div>
 
-                <div className="agregar-btn">
-                    <Link to="/obra-social/agregar">
-                        <h2>Agregar Obra Social</h2>
-                        <img src={boton_agregar} alt="agregar"></img>
-                    </Link>
-                </div>
+                <input 
+                    type="text"
+                    name="medico"
+                    id="medico"
+                    placeholder="Buscar médico"
+                    className="cyr-input"
+                >
+                </input>
             </div>
             
             <div className="main-container">
@@ -62,27 +60,27 @@ const HomeOS = () => {
 
                 <div className="list-container">
                     <list>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
+                        <IndividualOS title="Transacción"/>
                     </list>
                 </div>
             </div>
         </>
     );
 }
-
-export default HomeOS;
+ 
+export default CyR;

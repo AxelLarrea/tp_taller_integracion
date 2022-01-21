@@ -37,7 +37,7 @@ const SendMensaje = () => {
 
                     <form>
                         <div className="message-input-container">
-                            <input 
+                            <input
                                 type="text" 
                                 name="nombre"
                                 id="nombre"
