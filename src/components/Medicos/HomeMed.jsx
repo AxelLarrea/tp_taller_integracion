@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import boton_regresar from '../assets/boton_regresar.png';
-import boton_agregar from '../assets/boton_agregar.png';
-import IndividualOS from './ObraSocial/IndividualOS';
+import boton_regresar from '../../assets/boton_regresar.png';
+import boton_agregar from '../../assets/boton_agregar.png';
+import IndividualMed from './IndividualMed';
+import MedChecker from './MedChecker';
+import '../../styles/Meds.css';
 
 const HomeMed = () => {
+
+    let [form, setForm] = useState(false);
+    console.log(form);
+
+    
     return (
         <>
             <div className="btn-container">
@@ -15,7 +22,7 @@ const HomeMed = () => {
                     </Link>
                 </div>
 
-                <input 
+                <input
                     type="text"
                     name="medico"
                     id="medico"
@@ -24,13 +31,13 @@ const HomeMed = () => {
                 >
                 </input>
 
-                <div className="agregar-btn">
-                    <Link to="/">
-                        <h2>Agregar Médico</h2>
-                        <img src={boton_agregar} alt="agregar"></img>
-                    </Link>
+                <div className="agregar-btn-med" onClick={() => setForm(form = !form)}>
+                    <h2>Agregar Médico</h2>
+                    <img src={boton_agregar} alt="agregar"></img>
                 </div>
             </div>
+
+            
             
             <div className="main-container">
                 <div className="filter-container">
@@ -66,23 +73,26 @@ const HomeMed = () => {
                     </select>
                 </div>
 
+                {form && <MedChecker/>}
+
                 <div className="list-container">
                     <list>
-                        <IndividualOS title="Médico"/>
-                        <IndividualOS title="Médico"/>
-                        <IndividualOS title="Médico"/>
-                        <IndividualOS title="Médico"/>
-                        <IndividualOS title="Médico"/>
-                        <IndividualOS title="Médico"/>
-                        <IndividualOS title="Médico"/>
-                        <IndividualOS title="Médico"/>
-                        <IndividualOS title="Médico"/>
-                        <IndividualOS title="Médico"/>
-                        <IndividualOS title="Médico"/>
-                        <IndividualOS title="Médico"/>
+                        <IndividualMed/>
+                        <IndividualMed/>
+                        <IndividualMed/>
+                        <IndividualMed/>
+                        <IndividualMed/>
+                        <IndividualMed/>
+                        <IndividualMed/>
+                        <IndividualMed/>
+                        <IndividualMed/>
+                        <IndividualMed/>
+                        <IndividualMed/>
+                        <IndividualMed/>
                     </list>
                 </div>
             </div>
+            
         </>
     );
 }

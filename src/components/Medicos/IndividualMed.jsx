@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const IndividualOS = () => {
+const IndividualMed = () => {
     return (
         <div className="super-os-container">
             <div className="OS-container">
-                <h2>Obra Social</h2>
+                <h2>Médico</h2>
                 <div className="super-btn-container">
                     <div className="btn-container-os">
-                        <Link to="/obra-social/editar">
+                        <Link to="/medicos/editar">
                             <button className="os-btn">Editar</button>
                         </Link>
                         <button className="os-btn">Eliminar</button>
@@ -19,4 +19,4 @@ const IndividualOS = () => {
     );
 }
 
-export default IndividualOS;
+export default IndividualMed;
