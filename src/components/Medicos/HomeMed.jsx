@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import boton_regresar from '../../assets/boton_regresar.png';
 import boton_agregar from '../../assets/boton_agregar.png';
@@ -8,9 +8,42 @@ import '../../styles/Meds.css';
 
 const HomeMed = () => {
 
+    // Mostrar verificación previa a agregar un médico
     let [form, setForm] = useState(false);
-    console.log(form);
 
+
+    // Hook para guardar los datos de los médicos
+    const [medicos, setMedicos] = useState([]);
+    const [tablaMedicos, setTablaMedicos] = useState([]);
+
+    useEffect(() => {
+        fetch("medicos.json")
+        .then(response => response.json())
+        .then(data => {
+            setMedicos(data)
+            setTablaMedicos(data)
+        })
+    }, [])
+
+    
+
+    //Filtro dinámico para la barra de búsqueda
+
+    const handleInputChange = (e) =>{
+        
+        filtrar(e.target.value);
+    }
+
+    const filtrar = (search) => {
+        let resultado = tablaMedicos.filter( elemento => {
+            if(elemento.name.toString().toLowerCase().includes(search.toLowerCase())
+                || elemento.surname.toString().toLowerCase().includes(search.toLowerCase())
+            ){
+                return elemento;
+            }
+        });
+        setMedicos(resultado);
+    }
     
     return (
         <>
@@ -28,6 +61,7 @@ const HomeMed = () => {
                     id="medico"
                     placeholder="Buscar médico"
                     className="med-input"
+                    onChange={handleInputChange}
                 >
                 </input>
 
@@ -76,20 +110,18 @@ const HomeMed = () => {
                 {form && <MedChecker/>}
 
                 <div className="list-container">
-                    <list>
-                        <IndividualMed/>
-                        <IndividualMed/>
-                        <IndividualMed/>
-                        <IndividualMed/>
-                        <IndividualMed/>
-                        <IndividualMed/>
-                        <IndividualMed/>
-                        <IndividualMed/>
-                        <IndividualMed/>
-                        <IndividualMed/>
-                        <IndividualMed/>
-                        <IndividualMed/>
-                    </list>
+                    <section>
+
+                        {
+                            medicos.map( med => {
+                                return <IndividualMed
+                                            medico_obj={med}
+                                            key={med.id}
+                                        />
+                            })
+                        }
+
+                    </section>
                 </div>
             </div>
             

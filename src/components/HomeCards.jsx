@@ -13,25 +13,6 @@ const HomeCards = () => {
                         </div>
                     </Link>
 
-                    <Link to="/turnos">
-                        <div className="card">
-                            <h2>Turnos</h2>
-                        </div>
-                    </Link>
-                </div>
-    
-                <Link to="/obra-social">
-                    <div className="card2">
-                        <h2>Administrar Obras Sociales</h2>
-                    </div>
-                </Link>
-
-            </div>
-
-
-            <div className="cards-container">
-                
-                <div className="little-card-container">
                     <Link to="/mensajes">
                         <div className="card">
                             <h2>Enviar Mensaje</h2>
@@ -43,13 +24,21 @@ const HomeCards = () => {
                             <h2>Noticias</h2>
                         </div>
                     </Link>
+
                 </div>
-                
+    
+                <Link to="/obra-social">
+                    <div className="card2">
+                        <h2>Administrar Obras Sociales</h2>
+                    </div>
+                </Link>
+
                 <Link to="/cobros">
                     <div className="card2">
                         <h2>Cobros y Reintegros</h2>
                     </div>
                 </Link>
+
             </div>
         </div>
     );

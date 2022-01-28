@@ -62,22 +62,22 @@ const HomeOS = () => {
 
                 <div className="list-container">
                     <list>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
+                        <IndividualOS/>
+                        <IndividualOS/>
+                        <IndividualOS/>
+                        <IndividualOS/>
+                        <IndividualOS/>
+                        <IndividualOS/>
+                        <IndividualOS/>
+                        <IndividualOS/>
+                        <IndividualOS/>
+                        <IndividualOS/>
+                        <IndividualOS/>
+                        <IndividualOS/>
+                        <IndividualOS/>
+                        <IndividualOS/>
+                        <IndividualOS/>
+                        <IndividualOS/>
                     </list>
                 </div>
             </div>

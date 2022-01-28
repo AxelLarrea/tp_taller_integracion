@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 
@@ -6,6 +6,19 @@ const MedChecker = () => {
 
     let navigate = useNavigate();
 
+    const [pass, setPass] = useState(false);
+
+    const handleInputChange = e => {
+        console.log(e.target.value);
+        if(e.target.value.length === 11){
+            setPass(true);
+        }
+        else{
+            setPass(false);
+        }
+    }
+
+    
 
     return (
         <>
@@ -19,10 +32,11 @@ const MedChecker = () => {
                         name="cuil"
                         id="cuil"
                         required
+                        onChange={handleInputChange}
                     >
                     </input>
                     
-                    <button className="verificar-btn" type="submit" onClick={() => {navigate("/medicos/agregar")}}>
+                    <button className="verificar-btn" type="submit" onClick={() => {pass && navigate("/medicos/agregar")}}>
                         <span>Verificar</span>
                     </button>
                 </form>
