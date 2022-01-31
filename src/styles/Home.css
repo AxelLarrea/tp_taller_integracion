@@ -19,7 +19,7 @@ body{
 .grid-container {
     width: 100%;
     height: 700px;
-    margin-top: 10px;
+    margin-top: 60px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -43,7 +43,7 @@ body{
 }
 
 .little-card-container {
-    width: 68%;
+    width: 785px;
     display: flex;
     align-items: center;
     justify-content: space-between;
