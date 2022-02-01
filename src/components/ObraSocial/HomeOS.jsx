@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import boton_regresar from '../../assets/boton_regresar.png';
 import boton_agregar from '../../assets/boton_agregar.png';
@@ -7,6 +7,21 @@ import '../../styles/HomeOS.css';
 import IndividualOS from './IndividualOS';
 
 const HomeOS = () => {
+
+
+    // Hook para guardar los datos de las Obras Sociales
+    const [obras, setObras] = useState([]);
+    
+    const cargarObras = async () => {
+        const response = await fetch("http://localhost:4000/tarea");
+        const data = await response.json();
+        setObras(data);
+    }
+
+    useEffect(() => {
+        cargarObras();
+    }, []);
+
 
     return (
         <>
@@ -61,16 +76,20 @@ const HomeOS = () => {
                 </div>
 
                 <div className="list-container">
-                    <list>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                        <IndividualOS title="Obra Social"/>
-                    </list>
+                    <section>
+
+                        {
+                            obras.map( obra => {
+                                return <IndividualOS
+                                            obra={obra}
+                                            key={obra.id}
+                                            setObras={setObras}
+                                            obras={obras}
+                                        />
+                            })
+                        }
+
+                    </section>
                 </div>
             </div>
         </>

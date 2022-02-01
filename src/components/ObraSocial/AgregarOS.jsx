@@ -1,29 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import boton_regresar from '../../assets/boton_regresar.png';
-import {Link} from 'react-router-dom';
-import {useLocation} from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import '../../styles/AgregarOS.css';
 import Header from '../Header';
 
 const AgregarOS = ({text, btntext}) => {
 
-    let location = useLocation();
-    let npc = '';
-    let splitstr = '';
-    let nombre = '';
-    let porcentaje = '';
-    let cobertura = '';
+    const navigate = useNavigate();
 
-    if (location.search.length !== 0) {
-        splitstr = location.search.split('?nombre=')[1].split('&porcentaje=');
-        npc = splitstr[1].split('&cobertura=');
-        nombre = splitstr[0];
-        porcentaje = npc[0];
-        cobertura = npc[1];
+    const params = useParams();
+
+    // Hook para saber si se está editano o no
+    const [editing, setEditing] = useState(false);
+
+    // Hook para guardar los datos de la Obra Social a agregar
+    const [obraSocial, setObrasocial] = useState({
+        nombre: "",
+        porcentajecobertura: ""
+    });
+
+    const handleSubmit = async (e) => {
+
+        e.preventDefault();
+
+        if (editing){
+            await fetch(`http://localhost:4000/tarea/${params.id}`, {
+                method: "PUT",
+                body: JSON.stringify(obraSocial),
+                headers: {"Content-Type": "application/json"}
+            });
+            
+        }else{
+            await fetch("http://localhost:4000/tarea", {
+                method: "POST",
+                body: JSON.stringify(obraSocial),
+                headers: {"Content-Type": "application/json"}
+            });
+        }
+        
+        navigate('/obra-social');
+
     }
-    
-    console.log(`Nombre: ${nombre}, Porcentaje: ${porcentaje}, Cobertura: ${cobertura}`);
 
+    const handleChange = (e) => {
+        setObrasocial({ ...obraSocial, [e.target.name]: e.target.value });
+    }
+
+    const cargarObra = async (id) => {
+        const res = await fetch(`http://localhost:4000/tarea/${id}`);
+        const data = await res.json();
+        setObrasocial({nombre: data.nombre, porcentajecobertura: data.porcentajecobertura});
+        setEditing(true);
+    }
+
+    useEffect(() => {
+        if (params.id) {
+            cargarObra(params.id);
+        }
+    }, [params.id])
 
     return (
         <>
@@ -40,28 +74,26 @@ const AgregarOS = ({text, btntext}) => {
                 <div className="form-container">
                     <h1>{text} Obra Social</h1>
 
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className="input-container">
                             <input 
                                 type="text" 
                                 name="nombre"
                                 id="nombre"
-                                placeholder="Nombre"                
+                                placeholder="Nombre"
+                                value={obraSocial.nombre}
+                                onChange={handleChange}         
                             />
 
                             <input 
                                 type="text" 
-                                name="porcentaje"
-                                id="porcentaje"
-                                placeholder="Porcentaje"                
+                                name="porcentajecobertura"
+                                id="porcentajecobertura"
+                                value={obraSocial.porcentajecobertura}
+                                placeholder="Porcentaje de Cobertura"
+                                onChange={handleChange}           
                             />
 
-                            <input 
-                                type="text" 
-                                name="cobertura"
-                                id="cobertura"
-                                placeholder="Cobertura"                
-                            />
                             
                             <button type="submit">
                                 <h3>{btntext}</h3>

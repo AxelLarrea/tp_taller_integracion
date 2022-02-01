@@ -24,7 +24,7 @@ const App = () => {
                     <Route path='/medicos/editar/:id' element={<EditarMed/>}/>
 
                     <Route path='/obra-social' element={<ObraSocial/>}/>  
-                    <Route path='/obra-social/editar/' element={<AgregarOS text="Editar" btntext="Guardar Cambios"/>}/> 
+                    <Route path='/obra-social/editar/:id' element={<AgregarOS text="Editar" btntext="Guardar Cambios"/>}/> 
                     <Route path='/obra-social/agregar' element={<AgregarOS text="Agregar" btntext="Agregar"/>}/>
 
      

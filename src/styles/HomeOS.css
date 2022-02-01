@@ -99,7 +99,13 @@
 }
 
 .OS-container h2 {
-    margin-left: 50px;
+    margin-left: 40px;
+}
+
+.info-container {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .super-btn-container {
