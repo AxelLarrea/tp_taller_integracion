@@ -22,7 +22,7 @@ const HomeOS = () => {
         cargarObras();
     }, []);
 
-
+    
     return (
         <>
             <div className="btn-container">

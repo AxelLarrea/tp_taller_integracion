@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
-import CyR from '../components/CyR';
+import CyR from '../components/Cobros/CyR';
 
 const Cobros = () => {
     return (
@@ -10,5 +10,5 @@ const Cobros = () => {
         </>
     );
 }
- 
+
 export default Cobros;

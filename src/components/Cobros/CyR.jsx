@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import boton_regresar from '../assets/boton_regresar.png';
-import IndividualOS from './ObraSocial/IndividualOS';
+import boton_regresar from '../../assets/boton_regresar.png';
+import IndividualCobro from './IndividualCobro';
+
 
 const CyR = () => {
     return (
@@ -59,24 +60,11 @@ const CyR = () => {
                 </div>
 
                 <div className="list-container">
-                    <list>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                        <IndividualOS title="Transacción"/>
-                    </list>
+                    <section>
+                        <IndividualCobro/>
+                        <IndividualCobro/>
+                        <IndividualCobro/>
+                    </section>
                 </div>
             </div>
         </>

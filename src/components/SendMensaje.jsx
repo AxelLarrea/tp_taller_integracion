@@ -1,25 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import boton_regresar from '../assets/boton_regresar.png';
 import {Link} from 'react-router-dom';
-import {useLocation} from 'react-router';
 import '../styles/SendMensaje.css';
 
 
 
 const SendMensaje = () => {
 
-    let location = useLocation();
-    let cyu = '';
-    let correo = '';
-    let mensaje = '';
 
-    if (location.search.length !== 0) {
-        cyu = location.search.split('?nombre=')[1].split('&message=');
-        correo = cyu[0].replace('%40', '@');
-        mensaje = cyu[1];
+    // Hook para guardar el mensaje
+    const [mail, setMail] = useState({
+        nombre: '',
+        message: ''
+    })
+
+    const handleChange = (e) => {
+        setMail({ ...mail, [e.target.name]: e.target.value });
     }
-    
-    console.log(`Correo: ${correo}, Mensaje: ${mensaje}`);
 
 
     return (
@@ -41,7 +38,8 @@ const SendMensaje = () => {
                                 type="text" 
                                 name="nombre"
                                 id="nombre"
-                                placeholder="Nombre del médico"                
+                                placeholder="Nombre del médico"
+                                onChange={handleChange}             
                             />
 
                             {/* <input 
@@ -61,6 +59,7 @@ const SendMensaje = () => {
 
                             <textarea
                                     name="message"
+                                    onChange={handleChange}
                             >
 
                             </textarea>

@@ -41,7 +41,7 @@ const AgregarOS = ({text, btntext}) => {
         navigate('/obra-social');
 
     }
-
+    
     const handleChange = (e) => {
         setObrasocial({ ...obraSocial, [e.target.name]: e.target.value });
     }
