@@ -9,20 +9,25 @@ import '../../styles/Meds.css';
 const HomeMed = () => {
 
     // Mostrar verificación previa a agregar un médico
-    let [form, setForm] = useState(false);
+    const [form, setForm] = useState(false);
 
 
     // Hook para guardar los datos de los médicos
     const [medicos, setMedicos] = useState([]);
     const [tablaMedicos, setTablaMedicos] = useState([]);
 
+
+    const cargarMedicos = async () => {
+        const res = await fetch('http://localhost:4000/medicos');
+        const data = await res.json();
+        setMedicos(data);
+        setTablaMedicos(data);
+    }
+
+    console.log(medicos);
+
     useEffect(() => {
-        fetch("medicos.json")
-        .then(response => response.json())
-        .then(data => {
-            setMedicos(data)
-            setTablaMedicos(data)
-        })
+        cargarMedicos();
     }, [])
 
     
@@ -36,8 +41,8 @@ const HomeMed = () => {
 
     const filtrar = (search) => {
         let resultado = tablaMedicos.filter( elemento => {
-            if(elemento.name.toString().toLowerCase().includes(search.toLowerCase())
-                || elemento.surname.toString().toLowerCase().includes(search.toLowerCase())
+            if(elemento.nombre.toString().toLowerCase().includes(search.toLowerCase())
+                || elemento.apellido.toString().toLowerCase().includes(search.toLowerCase())
             ){
                 return elemento;
             }
@@ -65,7 +70,7 @@ const HomeMed = () => {
                 >
                 </input>
 
-                <div className="agregar-btn-med" onClick={() => setForm(form = !form)}>
+                <div className="agregar-btn-med" onClick={() => setForm(!form)}>
                     <h2>Agregar Médico</h2>
                     <img src={boton_agregar} alt="agregar"></img>
                 </div>
@@ -77,6 +82,7 @@ const HomeMed = () => {
                 <div className="filter-container">
                     <h2>Filtros</h2>
                     <select name="filtro 1" className="filter">
+                        <option>Especialidad</option>
                         <option value="opcion 1">Opción 1</option>
                         <option value="opcion 2">Opción 2</option>
                         <option value="opcion 3">Opción 3</option>
@@ -116,7 +122,7 @@ const HomeMed = () => {
                             medicos.map( med => {
                                 return <IndividualMed
                                             medico_obj={med}
-                                            key={med.id}
+                                            key={med.dni}
                                         />
                             })
                         }

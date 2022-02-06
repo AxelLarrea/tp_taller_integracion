@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import boton_regresar from '../assets/boton_regresar.png';
 import {Link} from 'react-router-dom';
 import '../styles/SendMensaje.css';
@@ -16,8 +16,43 @@ const SendMensaje = () => {
 
     const handleChange = (e) => {
         setMail({ ...mail, [e.target.name]: e.target.value });
+        filtrarMedicos(mail.nombre);
     }
 
+    const filtrarMedicos = (search) => {
+        let resultado = tablaMedicos.filter( elemento => {
+            if(elemento.nombre.toString().toLowerCase().includes(search.toLowerCase())
+                || elemento.apellido.toString().toLowerCase().includes(search.toLowerCase())
+            ){
+                return elemento;
+            }
+        });
+        setMedicos(resultado);
+    }
+
+    // Hook para obtener los Médicos
+
+    const [medicos, setMedicos] = useState([]);
+    const [tablaMedicos, setTablaMedicos] = useState([]);
+    
+
+    const cargarMedicos = async () => {
+        const res = await fetch('http://localhost:4000/medicos');
+        const data = await res.json();
+        setMedicos(data);
+        setTablaMedicos(data);
+    }
+
+    if (medicos.length === 1) {
+        mail.nombre = medicos[0].correoelectronico;
+    }
+
+    console.log("Medicos: ", medicos);
+    console.log("mail: ", mail);
+
+    useEffect(() => {
+        cargarMedicos();
+    }, [])
 
     return (
         <>
@@ -39,7 +74,7 @@ const SendMensaje = () => {
                                 name="nombre"
                                 id="nombre"
                                 placeholder="Nombre del médico"
-                                onChange={handleChange}             
+                                onChange={handleChange}         
                             />
 
                             {/* <input 

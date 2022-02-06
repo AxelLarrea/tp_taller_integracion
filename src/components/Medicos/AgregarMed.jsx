@@ -6,7 +6,6 @@ const AgregarMed = () => {
     return (
         <>
             <Header/>
-
             <FormComponent text="Agregar"/>
         </>
     );

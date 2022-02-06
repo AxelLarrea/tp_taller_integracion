@@ -10,7 +10,7 @@ const AgregarOS = ({text, btntext}) => {
 
     const params = useParams();
 
-    // Hook para saber si se está editano o no
+    // Hook para saber si se está editando o no
     const [editing, setEditing] = useState(false);
 
     // Hook para guardar los datos de la Obra Social a agregar
@@ -18,20 +18,20 @@ const AgregarOS = ({text, btntext}) => {
         nombre: "",
         porcentajecobertura: ""
     });
-
+    
     const handleSubmit = async (e) => {
 
         e.preventDefault();
 
         if (editing){
-            await fetch(`http://localhost:4000/tarea/${params.id}`, {
+            await fetch(`http://localhost:4000/obra-social/${params.id}`, {
                 method: "PUT",
                 body: JSON.stringify(obraSocial),
                 headers: {"Content-Type": "application/json"}
             });
             
         }else{
-            await fetch("http://localhost:4000/tarea", {
+            await fetch("http://localhost:4000/obra-social", {
                 method: "POST",
                 body: JSON.stringify(obraSocial),
                 headers: {"Content-Type": "application/json"}
@@ -47,7 +47,7 @@ const AgregarOS = ({text, btntext}) => {
     }
 
     const cargarObra = async (id) => {
-        const res = await fetch(`http://localhost:4000/tarea/${id}`);
+        const res = await fetch(`http://localhost:4000/obra-social/${id}`);
         const data = await res.json();
         setObrasocial({nombre: data.nombre, porcentajecobertura: data.porcentajecobertura});
         setEditing(true);

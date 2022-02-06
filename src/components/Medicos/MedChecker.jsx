@@ -1,48 +1,65 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import Error from './Error';
 
+const MedChecker = () => {
 
-const MedChecker = ({setForm, form}) => {
+    const msj = "Médico existente";
 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [pass, setPass] = useState(false);
+    const [data, setData] = useState([]);
+    const [cuil, setCuil] = useState('');
+    const [pseudocuil, setPseudocuil] = useState('');
 
-    const handleInputChange = e => {
-        console.log(e.target.value);
+    const handleChange = (e) => {
+
+        setPseudocuil(e.target.value);
+
         if(e.target.value.length === 11){
-            setPass(true);
+            setCuil(e.target.value);
         }
-        else{
-            setPass(false);
-        }
+        
     }
 
-    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        cargarMedico(cuil);
+    }
 
+    const cargarMedico = async (id) => {
+
+        const res = await fetch(`http://localhost:4000/medicos/${id}`);
+        const data = await res.json();
+        setData(data);
+        setPass(true);
+    }
+    
     return (
         <>
             <div className="check-container">
                 <h2>Ingrese el CUIL del Médico</h2>
                 
-                <form>
+                <form onSubmit={handleSubmit}>
                     <input
                         type="text"
                         placeholder="__-________-_"
                         name="cuil"
                         id="cuil"
                         required
-                        onChange={handleInputChange}
+                        onChange={handleChange}
                     >
                     </input>
                     
-                    <button className="verificar-btn" type="submit" onClick={() => {pass && navigate("/medicos/agregar")}}>
+                    <button className="verificar-btn" type="submit">
                         <span>Verificar</span>
                     </button>
                 </form>
+                {cuil && data.dni === undefined && pass ? navigate('/medicos/agregar/') : cuil && data.dni !== undefined && data.cuil === pseudocuil && <Error error={msj} cuil={pseudocuil}/>}
             </div>
         </>
     );
 }
- 
+
 export default MedChecker;

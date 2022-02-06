@@ -13,7 +13,7 @@ const HomeOS = () => {
     const [obras, setObras] = useState([]);
     
     const cargarObras = async () => {
-        const response = await fetch("http://localhost:4000/tarea");
+        const response = await fetch("http://localhost:4000/obra-social");
         const data = await response.json();
         setObras(data);
     }

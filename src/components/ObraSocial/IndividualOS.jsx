@@ -6,7 +6,7 @@ const IndividualOS = ({obra, setObras, obras}) => {
     const { id, nombre, porcentajecobertura } = obra;
 
     const handleDelete = async (id) => {
-        await fetch(`http://localhost:4000/tarea/${id}`, {
+        await fetch(`http://localhost:4000/obra-social/${id}`, {
             method: 'DELETE'
         });
 
