@@ -1,10 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const IndividualMed = ({medico_obj}) => {
+const IndividualMed = ({medico_obj, medicos, setMedicos}) => {
 
     const {cuil, nombre, apellido} = medico_obj;
 
+    const handleDelete = async (id) => {
+        await fetch(`http://localhost:4000/medicos/${id}`, {
+            method: 'DELETE'
+        });
+
+        setMedicos(medicos.filter( (med) => med.cuil !== cuil))
+    }
     
     return (
         <div className="super-os-container">
@@ -15,7 +22,7 @@ const IndividualMed = ({medico_obj}) => {
                         <Link to={`editar/${cuil}`}>
                             <button className="os-btn">Editar</button>
                         </Link>
-                        <button className="os-btn">Eliminar</button>
+                        <button className="os-btn" onClick={() => handleDelete(cuil)}>Eliminar</button>
                     </div>
                 </div>
             </div>

@@ -30,8 +30,8 @@ const SendMensaje = () => {
         setMedicos(resultado);
     }
 
-    // Hook para obtener los Médicos
 
+    // Hook para obtener los Médicos
     const [medicos, setMedicos] = useState([]);
     const [tablaMedicos, setTablaMedicos] = useState([]);
     
@@ -74,23 +74,9 @@ const SendMensaje = () => {
                                 name="nombre"
                                 id="nombre"
                                 placeholder="Nombre del médico"
-                                onChange={handleChange}         
+                                value={mail.nombre}
+                                onChange={handleChange}
                             />
-
-                            {/* <input 
-                                type="text" 
-                                name="mensaje"
-                                id="mensaje"
-                                maxLength="300"
-                            /> */}
-                            
-                            {/* <div 
-                                role="textbox" 
-                                contenteditable="true" 
-                                className="mensaje"
-                            >
-
-                            </div> */}
 
                             <textarea
                                     name="message"

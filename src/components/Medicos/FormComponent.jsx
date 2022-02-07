@@ -68,9 +68,7 @@ const FormComponent = ({text}) => {
         navigate('/medicos');
     }
 
-    console.log('Medico: ', medico);
-    // console.log('Usuario: ', usuario);
-    // console.log('Med: ', med);
+    
     return (
         <>
             <div className="regresar-btn">

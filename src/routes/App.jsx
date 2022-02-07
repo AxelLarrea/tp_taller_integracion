@@ -10,6 +10,7 @@ import Cobros from '../pages/Cobros';
 import AgregarOS from '../components/ObraSocial/AgregarOS';
 import AgregarMed from '../components/Medicos/AgregarMed';
 import EditarMed from '../components/Medicos/EditarMed';
+import AgregarNoticia from '../components/Noticias/AgregarNoticia';
 
 const App = () => {
     return (
@@ -23,13 +24,19 @@ const App = () => {
                     <Route path='/medicos/agregar' element={<AgregarMed/>}/>
                     <Route path='/medicos/editar/:id' element={<EditarMed/>}/>
 
+
                     <Route path='/obra-social' element={<ObraSocial/>}/>  
                     <Route path='/obra-social/editar/:id' element={<AgregarOS text="Editar" btntext="Guardar Cambios"/>}/> 
                     <Route path='/obra-social/agregar' element={<AgregarOS text="Agregar" btntext="Agregar"/>}/>
-
      
+
                     <Route path='/mensajes' element={<Mensajes/>}/>
+
+
                     <Route path='/noticias' element={<Noticias/>}/>  
+                    <Route path='/noticias/agregarnoticia' element={<AgregarNoticia/>}/> 
+
+                    
                     <Route path='/cobros' element={<Cobros/>}/>     
                 </Routes>
             </Layout>

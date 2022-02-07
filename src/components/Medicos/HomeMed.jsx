@@ -8,6 +8,7 @@ import '../../styles/Meds.css';
 
 const HomeMed = () => {
 
+
     // Mostrar verificación previa a agregar un médico
     const [form, setForm] = useState(false);
 
@@ -49,7 +50,8 @@ const HomeMed = () => {
         });
         setMedicos(resultado);
     }
-    
+
+
     return (
         <>
             <div className="btn-container">
@@ -123,6 +125,8 @@ const HomeMed = () => {
                                 return <IndividualMed
                                             medico_obj={med}
                                             key={med.dni}
+                                            medicos={medicos}
+                                            setMedicos={setMedicos}
                                         />
                             })
                         }
