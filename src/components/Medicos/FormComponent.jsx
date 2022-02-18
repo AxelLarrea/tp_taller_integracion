@@ -46,7 +46,7 @@ const FormComponent = ({text}) => {
             cargarMedico(params.id);
         }
     },[params.id])
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
 
